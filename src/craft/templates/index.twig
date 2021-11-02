@@ -1,0 +1,21 @@
+{% requireLogin %}
+{% set csrfTokenName = craft.app.config.general.csrfTokenName %}
+{% set csrfToken = craft.app.request.csrfToken %}
+{% set journeyId = craft.request.getQuery("journeyId") %}
+{% set taskId = craft.request.getQuery("taskId") %}
+{% set info = craft.netlogo.getJourneyAndTask(journeyId, taskId) %}
+
+<!DOCTYPE html>
+<html lang="">
+<head>
+	<script>
+	    var __SERVICE_URL__ = "{{ actionUrl('netlogo/default/') }}";
+	    var __CSRF_TOKEN_NAME__ = "{{ csrfTokenName }}";
+	    var __CSRF_TOKEN__ = "{{ csrfToken }}";
+	    var __JOURNEY_ID__ = {{ journeyId ?? "0" }};
+	    var __TASK_ID__ = {{ taskId ?? "0" }};
+	    var __USER_ID__ = {{ currentUser.id }};
+	    var __CONTENT__ = JSON.parse("{{ info|json_encode|e('js') }}");
+	</script>
+	{% do view.registerAssetBundle("fablevision\\netlogo\\assetbundles\\SimulationBundle") %}
+<meta charset="utf-8"><meta name="description" content="Netlogo Simulation Builder"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/favicon.ico"><title>a2s-netlogo</title><link href="/css/createLib.f376a661.css" rel="prefetch"><link href="/js/chunk-2d0dea5a.2890d3f6.js" rel="prefetch"><link href="/js/chunk-2d237d24.fc840967.js" rel="prefetch"><link href="/js/chunk-6af426f8.cfcb58bd.js" rel="prefetch"><link href="/js/createLib.fb10311c.js" rel="prefetch"><link href="/css/app.1ef513f9.css" rel="preload" as="style"><link href="/js/app.91c4bb33.js" rel="preload" as="script"><link href="/js/chunk-vendors.4a7fab7f.js" rel="preload" as="script"><link href="/css/app.1ef513f9.css" rel="stylesheet"></head><body><noscript><strong>We're sorry but a2s-netlogo doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="app"></div><script src="/js/chunk-vendors.4a7fab7f.js"></script><script src="/js/app.91c4bb33.js"></script></body></html>

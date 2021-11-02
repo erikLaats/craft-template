@@ -1,0 +1,391 @@
+{
+    "fieldGroups": [
+        "Journey"
+    ],
+    "volumes": [
+        {
+            "name": "Content Images",
+            "handle": "contentImages",
+            "type": "craft\\volumes\\Local",
+            "hasUrls": true,
+            "url": "@web\/assets\/images\/content",
+            "settings": {
+                "path": "@webroot\/assets\/images\/content"
+            },
+            "fieldLayout": {
+                "Content": [
+                    "__ui_1"
+                ]
+            },
+            "fieldConfigs": {
+                "Content": {
+                    "__ui_1": {
+                        "type": "craft\\fieldlayoutelements\\AssetTitleField",
+                        "width": 100
+                    }
+                }
+            }
+        },
+        {
+            "name": "Netlogo Scripts",
+            "handle": "netlogoScripts",
+            "type": "craft\\volumes\\Local",
+            "hasUrls": true,
+            "url": "@web\/assets\/scripts\/",
+            "settings": {
+                "path": "@webroot\/assets\/scripts"
+            },
+            "fieldLayout": {
+                "Content": [
+                    "__ui_1"
+                ]
+            },
+            "fieldConfigs": {
+                "Content": {
+                    "__ui_1": {
+                        "type": "craft\\fieldlayoutelements\\AssetTitleField",
+                        "width": 100
+                    }
+                }
+            }
+        }
+    ],
+    "sections": [
+        {
+            "name": "Journey",
+            "handle": "journey",
+            "type": "channel",
+            "enableVersioning": true,
+            "propagateEntries": true,
+            "siteSettings": [
+                {
+                    "hasUrls": true,
+                    "uriFormat": "journey\/{slug}",
+                    "template": "journey.twig",
+                    "enabledByDefault": true
+                }
+            ]
+        },
+        {
+            "name": "Journey Task",
+            "handle": "journeyTask",
+            "type": "channel",
+            "enableVersioning": true,
+            "propagateEntries": true,
+            "siteSettings": [
+                {
+                    "hasUrls": true,
+                    "uriFormat": "journey-task\/{slug}",
+                    "template": "journey-task\/_entry",
+                    "enabledByDefault": true
+                }
+            ]
+        }
+    ],
+    "fields": [
+        {
+            "group": "Journey",
+            "name": "Block Library",
+            "handle": "blockLibrary",
+            "instructions": "",
+            "type": "craft\\fields\\MultiSelect",
+            "multi": true,
+            "optgroups": true,
+            "options": [
+                {
+                    "label": "General",
+                    "value": "general",
+                    "default": "1"
+                },
+                {
+                    "label": "Diffusion",
+                    "value": "diffusion",
+                    "default": ""
+                },
+                {
+                    "label": "Wildfires",
+                    "value": "wildfires",
+                    "default": ""
+                }
+            ]
+        },
+        {
+            "group": "Journey",
+            "name": "Journey Description",
+            "handle": "journeyDescription",
+            "instructions": "",
+            "type": "craft\\redactor\\Field",
+            "uiMode": "enlarged",
+            "redactorConfig": "",
+            "purifierConfig": "",
+            "cleanupHtml": true,
+            "removeInlineStyles": "1",
+            "removeEmptyTags": "1",
+            "removeNbsp": "1",
+            "purifyHtml": "1",
+            "columnType": "text",
+            "availableVolumes": "*",
+            "availableTransforms": "*",
+            "showUnpermittedVolumes": false,
+            "showUnpermittedFiles": false,
+            "showHtmlButtonForNonAdmins": "",
+            "configSelectionMode": "choose",
+            "manualConfig": "",
+            "defaultTransform": ""
+        },
+        {
+            "group": "Journey",
+            "name": "Journey Resources",
+            "handle": "journeyResources",
+            "instructions": "",
+            "type": "craft\\fields\\Matrix",
+            "minBlocks": "",
+            "maxBlocks": "",
+            "propagationMethod": "all",
+            "blockTypes": [
+                {
+                    "name": "Resource Link",
+                    "handle": "resourceLink",
+                    "fields": [
+                        {
+                            "required": true,
+                            "name": "Link Display Text",
+                            "handle": "linkDisplayText",
+                            "instructions": "",
+                            "type": "craft\\fields\\PlainText",
+                            "typesettings": {
+                                "uiMode": "normal",
+                                "code": "",
+                                "multiline": "",
+                                "initialRows": "4",
+                                "byteLimit": 255
+                            }
+                        },
+                        {
+                            "required": true,
+                            "name": "Link Url",
+                            "handle": "linkUrl",
+                            "instructions": "",
+                            "type": "craft\\fields\\Url",
+                            "typesettings": {
+                                "types": [
+                                    "url",
+                                    "tel",
+                                    "email"
+                                ],
+                                "maxLength": "255"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "group": "Journey",
+            "name": "Journey Tasks",
+            "handle": "journeyTasks",
+            "instructions": "",
+            "type": "craft\\fields\\Entries",
+            "sources": [
+                "section:journeyTask"
+            ],
+            "limit": "",
+            "selectionLabel": "",
+            "showSiteMenu": true,
+            "localizeRelations": false,
+            "validateRelatedElements": false,
+            "allowSelfRelations": false
+        },
+        {
+            "group": "Journey",
+            "name": "Journey Title",
+            "handle": "journeyTitle",
+            "instructions": "",
+            "type": "craft\\fields\\PlainText",
+            "uiMode": "normal",
+            "code": "",
+            "multiline": "",
+            "initialRows": "4",
+            "byteLimit": 255
+        },
+        {
+            "group": "Journey",
+            "name": "Task Script",
+            "handle": "taskScript",
+            "instructions": "",
+            "type": "craft\\fields\\Assets",
+            "useSingleFolder": false,
+            "allowUploads": true,
+            "defaultUploadLocationSource": "volume:netlogoScripts",
+            "defaultUploadLocationSubpath": "",
+            "singleUploadLocationSource": "volume:contentImages",
+            "singleUploadLocationSubpath": "",
+            "restrictFiles": "",
+            "showUnpermittedVolumes": false,
+            "showUnpermittedFiles": false,
+            "previewMode": "full",
+            "sources": [
+                "volume:netlogoScripts"
+            ],
+            "viewMode": "list",
+            "limit": "1",
+            "selectionLabel": "",
+            "showSiteMenu": false,
+            "localizeRelations": false,
+            "validateRelatedElements": false,
+            "allowSelfRelations": false
+        },
+        {
+            "group": "Journey",
+            "name": "Task Title",
+            "handle": "taskTitle",
+            "instructions": "",
+            "type": "craft\\fields\\PlainText",
+            "uiMode": "normal",
+            "code": "",
+            "multiline": "",
+            "initialRows": "4",
+            "byteLimit": 255
+        },
+        {
+            "group": "Journey",
+            "name": "Thumbnail",
+            "handle": "thumbnail",
+            "instructions": "",
+            "type": "craft\\fields\\Assets",
+            "useSingleFolder": false,
+            "allowUploads": true,
+            "defaultUploadLocationSource": "volume:contentImages",
+            "defaultUploadLocationSubpath": "",
+            "singleUploadLocationSource": "volume:contentImages",
+            "singleUploadLocationSubpath": "",
+            "restrictFiles": "1",
+            "allowedKinds": [
+                "image"
+            ],
+            "showUnpermittedVolumes": false,
+            "showUnpermittedFiles": false,
+            "previewMode": "full",
+            "sources": [
+                "volume:contentImages"
+            ],
+            "viewMode": "large",
+            "limit": "1",
+            "selectionLabel": "",
+            "showSiteMenu": false,
+            "localizeRelations": false,
+            "validateRelatedElements": false,
+            "allowSelfRelations": false
+        },
+        {
+            "group": "Journey",
+            "name": "World Width",
+            "handle": "worldWidth",
+            "instructions": "-(min-pxcor)+ max-pxcor + 1\r\nexample for diffusion: -(-100) + 100 + 1 = 201",
+            "type": "craft\\fields\\Number",
+            "min": "0",
+            "decimals": 0,
+            "previewFormat": "decimal",
+            "previewCurrency": ""
+        }
+    ],
+    "entryTypes": [
+        {
+            "sectionHandle": "journey",
+            "name": "Journey",
+            "handle": "journey",
+            "hasTitleField": true,
+            "titleFormat": "",
+            "fieldLayout": {
+                "Content": [
+                    "__ui_1",
+                    "journeyTitle",
+                    "journeyDescription",
+                    "thumbnail",
+                    "journeyTasks",
+                    "journeyResources"
+                ]
+            },
+            "fieldConfigs": {
+                "Content": {
+                    "__ui_1": {
+                        "type": "craft\\fieldlayoutelements\\EntryTitleField",
+                        "width": 100
+                    },
+                    "journeyTitle": {
+                        "label": "",
+                        "instructions": "",
+                        "width": 100,
+                        "required": true
+                    },
+                    "journeyDescription": {
+                        "label": "",
+                        "instructions": "",
+                        "width": 100,
+                        "required": true
+                    },
+                    "thumbnail": {
+                        "label": "",
+                        "instructions": "",
+                        "width": 100,
+                        "required": true
+                    },
+                    "journeyTasks": {
+                        "label": "",
+                        "instructions": "",
+                        "width": 100,
+                        "required": true
+                    },
+                    "journeyResources": {
+                        "width": 100
+                    }
+                }
+            }
+        },
+        {
+            "sectionHandle": "journeyTask",
+            "name": "Journey Task",
+            "handle": "journeyTask",
+            "hasTitleField": true,
+            "titleFormat": "",
+            "fieldLayout": {
+                "Content": [
+                    "__ui_1",
+                    "taskTitle",
+                    "blockLibrary",
+                    "taskScript",
+                    "worldWidth"
+                ]
+            },
+            "fieldConfigs": {
+                "Content": {
+                    "__ui_1": {
+                        "type": "craft\\fieldlayoutelements\\EntryTitleField",
+                        "width": 100
+                    },
+                    "taskTitle": {
+                        "label": "",
+                        "instructions": "",
+                        "width": 100,
+                        "required": true
+                    },
+                    "blockLibrary": {
+                        "label": "",
+                        "instructions": "",
+                        "width": 100,
+                        "required": true
+                    },
+                    "taskScript": {
+                        "label": "",
+                        "instructions": "",
+                        "width": 100,
+                        "required": true
+                    },
+                    "worldWidth": {
+                        "width": 100
+                    }
+                }
+            }
+        }
+    ]
+}

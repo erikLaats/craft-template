@@ -1,0 +1,89 @@
+html, body {
+	margin:  0;
+	padding: 0;
+	font-family: 'Roboto', sans-serif;
+	-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;
+}
+.login-container {
+	padding: 8rem 1rem;
+	background: #dedede;
+}
+
+.login-container .form {
+	background: white;
+	padding: 4rem;
+	border-radius: 2rem;
+	border: solid 2px #ababab;
+	color: #4d4d4d;
+	max-width: 30rem;
+	margin: 0 auto;
+	box-sizing: border-box;
+}
+
+.login-container .form .formrow {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	margin-bottom: 0.5rem;
+}
+
+.login-container .form .buttons {
+	display: flex;
+	justify-content: center;
+	margin-top: 2rem;
+}
+
+.login-container .form .label {
+	font-size: 1.25rem;
+	display: inline-block;
+	text-align: right;
+}
+
+.login-container .form input[type="text"],
+.login-container .form input[type="password"] {
+	border: solid 1px #ababab;
+	padding: 0.125rem 0.25rem;
+	font-size: 1.25rem;
+	flex: 1 1 auto;
+	display: inline-block;
+	margin-left: 1rem;
+	border-radius: 4px;
+}
+
+.login-container .form input[type="submit"] {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background: white;
+	border: solid 1px #ababab;
+	border-radius: 1rem;
+	font-family: inherit;
+	font-size: inherit;
+	padding: 0.125rem 1rem;
+	font-size: 1.25rem;
+}
+
+.login-container .p {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	margin-top: 1rem;
+}
+
+.login-container .errors {
+	padding-top: 2rem;
+	text-align: center;
+	color: red;
+	font-style: italic;
+	font-size: 1.25rem;
+}
+
+.footer {
+	padding: 2rem;
+}
+
+.footer .p {
+	max-width: 70rem;
+	margin: 0.5rem auto 1rem auto;
+}

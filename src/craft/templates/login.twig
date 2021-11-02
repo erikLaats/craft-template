@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>A2S Login</title>
+		<link rel="preconnect" href="https://fonts.gstatic.com"> 
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
+		{% do view.registerAssetBundle("fablevision\\netlogo\\assetbundles\\LoginBundle") %}
+
+	</head>
+	<body>
+		<div class="login-container">
+			<form class="form" method="post" accept-charset="UTF-8">
+				{{ csrfInput() }}
+				{{ actionInput('users/login') }}
+				<div class="formrow">
+					<label class="label" for="loginName">Username: </label>
+					{{ input('text', 'loginName', craft.app.user.rememberedUsername, { id: 'loginName',}) }}
+				</div>
+				<div class="formrow">
+					<label class="label" for="password">Password: </label> 
+					{{ input('password', 'password', null, { id: 'password',}) }}
+				</div>
+				<div class="buttons">
+					<input class="input submit button" type="submit" value="Login">
+				</div>
+				{% if errorMessage is defined %}
+				<div class="errors">{{ errorMessage }}</div>
+				{% endif %}
+				<p class="p">
+					<a class="a" href="{{ url('reset-password') }}">Forgot your password?</a>
+				</p>
+			</form>
+
+
+		</div>
+		<footer class="footer">
+			<p class="p">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec id elit non mi porta gravida at eget metus. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+			<p class="p">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras mattis consectetur purus sit amet fermentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+		</footer>
+	</body>
+</html>
